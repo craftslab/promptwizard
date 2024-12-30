@@ -1,0 +1,80 @@
+From 9e1af9dbf21c0147cdbc28b1783dcedfd130ec33 Mon Sep 17 00:00:00 2001
+From: lemonjia <angersax@sina.com>
+Date: Mon, 30 Dec 2024 15:44:08 +0800
+Subject: [PATCH] Add main entry
+
+---
+ prompt.py            | 11 +++++++++++
+ promptwizard/main.py | 32 ++++++++++++++++++++++++++++++++
+ setup.py             |  1 +
+ 3 files changed, 44 insertions(+)
+ create mode 100644 prompt.py
+ create mode 100644 promptwizard/main.py
+
+diff --git a/prompt.py b/prompt.py
+new file mode 100644
+index 0000000..9d6e048
+--- /dev/null
++++ b/prompt.py
+@@ -0,0 +1,11 @@
++#!/usr/bin/env python
++# -*- coding: utf-8 -*-
++
++import re
++import sys
++
++from promptwizard.main import main
++
++if __name__ == '__main__':
++    sys.argv[0] = re.sub(r'(-script\.pyw?|\.exe)?$', '', sys.argv[0])
++    sys.exit(main())
+diff --git a/promptwizard/main.py b/promptwizard/main.py
+new file mode 100644
+index 0000000..3d69562
+--- /dev/null
++++ b/promptwizard/main.py
+@@ -0,0 +1,32 @@
++# -*- coding: utf-8 -*-
++
++import argparse
++
++from .glue.promptopt.instantiate import GluePromptOpt
++
++
++def main():
++    parser = argparse.ArgumentParser(description="Arguments needed by prompt manager")
++    parser.add_argument('--llm_config_path', default=None)
++    parser.add_argument('--prompt_config_path', default=None)
++    parser.add_argument('--setup_config_path', default=None)
++    parser.add_argument('--train_file_name', default=None)
++    parser.add_argument('--test_file_name', default=None)
++    parser.add_argument('--dataset_processor_pkl_path', default=None)
++    parser.add_argument('--prompt_pool_path', default=None)
++
++    args = parser.parse_args()
++
++    gp = GluePromptOpt(args.llm_config_path,
++                       args.promptopt_config_path,
++                       args.setup_config_path,
++                       args.train_file_name,
++                       args.dataset_processor_pkl_path,
++                       args.prompt_pool_path)
++
++    best_prompt, expert_profile = gp.get_best_prompt()
++    print(f"Best prompt: {best_prompt} \nExpert profile: {expert_profile}")
++
++    if args.test_file_name:
++        accuracy = gp.evaluate(args.test_file_name)
++        print(f"accuracy: {accuracy}")
+diff --git a/setup.py b/setup.py
+index 4b63d43..5ba550e 100644
+--- a/setup.py
++++ b/setup.py
+@@ -72,4 +72,5 @@ setup(
+     include_package_data=True,
+     python_requires=">=3.8.0",
+     zip_safe=False,
++    entry_points={'console_scripts': ['promptwizard=promptwizard.main:main']},
+ )
+-- 
+2.47.1

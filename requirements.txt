@@ -1,0 +1,12 @@
+azure-identity
+azure-search-documents
+datasets
+llama-index-core==0.11.10
+llama-index==0.11.10
+nltk
+openai
+pyarrow==15.0.2
+python-dotenv
+pyyaml~=6.0.1
+tiktoken
+wheel
