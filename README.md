@@ -8,7 +8,7 @@
 
 ## Introduction
 
-*promptwizard* is the GitHub actions to build [PromptWizard](https://github.com/microsoft/PromptWizard) release on Ubuntu.
+*promptwizard* is the GitHub action to build [PromptWizard](https://github.com/microsoft/PromptWizard) docker on Ubuntu.
 
 
 
