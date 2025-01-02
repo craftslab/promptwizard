@@ -14,5 +14,6 @@
 
 ## Reference
 
-- [PromptWizard](https://github.com/microsoft/PromptWizard)
+- [promptperfect](https://promptperfect.jina.ai/)
+- [promptwizard](https://github.com/microsoft/PromptWizard)
 - [textpod](https://github.com/freetonik/textpod)
