@@ -17,4 +17,5 @@
 - [prompthancer](https://prompthancer.com/)
 - [promptperfect](https://promptperfect.jina.ai/)
 - [promptwizard](https://github.com/microsoft/PromptWizard)
+- [promptx](https://github.com/ai-flowx/promptx)
 - [textpod](https://github.com/freetonik/textpod)
