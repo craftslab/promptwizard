@@ -34,9 +34,11 @@ RUN git clone https://github.com/microsoft/PromptWizard.git promptwizard --depth
 USER craftslab
 WORKDIR /home/craftslab/promptwizard
 COPY promptwizard.patch .
-RUN git apply promptwizard.patch
+RUN git apply promptwizard.patch && \
+    rm -f promptwizard.patch
 COPY requirements.txt .
-RUN pip install -r requirements.txt
+RUN pip install -r requirements.txt && \
+    rm -f requirements.txt
 
 USER craftslab
 WORKDIR /home/craftslab/promptwizard
