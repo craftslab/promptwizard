@@ -2,7 +2,7 @@ azure-identity
 azure-search-documents
 datasets
 llama-index-core==0.11.10
-llama-index==0.11.10
+llama-index==0.13.0
 nltk
 openai
 pyarrow==15.0.2
